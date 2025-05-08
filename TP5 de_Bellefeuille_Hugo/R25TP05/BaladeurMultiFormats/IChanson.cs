@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace BaladeurMultiFormats
 {
+    /// <summary>
+    /// Définit tous les éléments requis pour une chanson
+    /// </summary>
     public interface IChanson
     {
         #region PROPRIÉTÉS

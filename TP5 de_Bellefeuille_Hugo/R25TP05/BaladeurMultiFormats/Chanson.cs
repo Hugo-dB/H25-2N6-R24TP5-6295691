@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace BaladeurMultiFormats
 {
+    /// <summary>
+    /// Une Chanson est caractérisée par son titre, l’artiste, l’année de création, le nom du fichier contenant ses paroles ainsi que son format.
+    /// </summary>
     public abstract class Chanson : IChanson
     {
         #region CHAMPS ET PROPRIÉTÉS
@@ -109,7 +112,9 @@ namespace BaladeurMultiFormats
         public Chanson(string pRepertoire, string pArtiste, string pTitre, int pAnnee)
         {
             m_nomFichier = pRepertoire + "/" + pTitre + "." + Format;
-            LireEntete();
+            m_artiste = pArtiste;
+            m_titre = pTitre;
+            m_annee = pAnnee;
         }
 
         #endregion
