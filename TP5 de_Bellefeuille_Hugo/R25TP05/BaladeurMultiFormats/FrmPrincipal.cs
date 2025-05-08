@@ -15,7 +15,7 @@ namespace BaladeurMultiFormats
 
     public partial class FrmPrincipal : Form
     {
-        public const string APP_INFO = "(Matériel)";
+        public const string APP_INFO = "6295691";
 
         #region Propriété : MonHistorique
         public Historique MonHistorique { get; }
