@@ -30,7 +30,7 @@ namespace BaladeurMultiFormats
             MonHistorique = new Historique();
             // À COMPLÉTER...
             ChansonAAC testAAC = new ChansonAAC("Chansons\\Blame It On Me.aac");
-            string test = testAAC.Paroles;
+            ChansonMP3 testMP3 = new ChansonMP3("Chansons\\Billie Jean.mp3");
         }
         #endregion
         //---------------------------------------------------------------------------------

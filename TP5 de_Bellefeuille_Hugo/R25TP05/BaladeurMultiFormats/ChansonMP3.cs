@@ -7,19 +7,15 @@ using System.Threading.Tasks;
 
 namespace BaladeurMultiFormats
 {
-    /// <summary>
-    /// Une ChansonAAC utilise un codage au format AAC
-    /// </summary>
-    public class ChansonAAC : Chanson
+    public class ChansonMP3 : Chanson
     {
-        
 
-        #region PROPRIÉTÉS
+        #region PROPRIÉTÉES
 
         /// <summary>
-        /// Obtient le format du fichier (AAC)
+        /// Obtient le format du fichier (MP3)
         /// </summary>
-        public override string Format { get { return "AAC"; } }
+        public override string Format { get { return "MP3"; } }
 
         #endregion
 
@@ -29,7 +25,7 @@ namespace BaladeurMultiFormats
         /// Initialise une instance avec les données passées en paramètres en appelant le constructeur de la classe de base.
         /// </summary>
         /// <param name="pNomFichier">Nom du fichier de la chanson</param>
-        public ChansonAAC(string pNomFichier) 
+        public ChansonMP3(string pNomFichier) 
                         : base(pNomFichier)
         {
         }
@@ -41,7 +37,7 @@ namespace BaladeurMultiFormats
         /// <param name="pArtiste">Nom de l'artiste de la chanson</param>
         /// <param name="pTitre">Titre de la chanson</param>
         /// <param name="pAnnee">Année de création de la chanson</param>
-        public ChansonAAC(string pRepertoire, string pArtiste, string pTitre, int pAnnee) 
+        public ChansonMP3(string pRepertoire, string pArtiste, string pTitre, int pAnnee) 
                         : base(pRepertoire, pArtiste, pTitre, pAnnee)
         {
         }
@@ -56,50 +52,51 @@ namespace BaladeurMultiFormats
         /// <param name="pobjFichier">Nom du fichier de la chanson</param>
         public override void EcrireEntete(StreamWriter pobjFichier)
         {
-            pobjFichier.WriteLine("TITRE = " + m_titre
-                             + " : ARTISTE = " + m_artiste
-                             + " : ANNÉE = " + m_annee);
+            pobjFichier.WriteLine(m_artiste 
+                                + " | " + m_annee 
+                                + " | " + m_titre);
             pobjFichier.Close();
         }
 
         /// <summary>
-        /// Encode les paroles reçues en paramètre au format AAC, ensuite écrit ses paroles encodées dans le fichier passé en paramètre.
+        /// Encode les paroles recue en paramètre au format MP3, ensuite écrit ses paraoles encodées dans le fichier passé en paramètre.
         /// </summary>
         /// <param name="pobjFichier">Nom du fichier de la chanson</param>
         /// <param name="pParoles">Paroles à écrire</param>
         public override void EcrireParoles(StreamWriter pobjFichier, string pParoles)
         {
-            string m_paroles = OutilsFormats.EncoderAAC(pParoles);
+            string m_paroles = OutilsFormats.EncoderMP3(pParoles);
             pobjFichier.Write(m_paroles);
             pobjFichier.Close();
         }
 
         /// <summary>
-        /// Lit la premiere ligne du fichier de la chanson et initialise les champs de la chanson (titre, artiste et année de création de la chanson)
+        /// Lit la premiere ligne du fichier de la chanson et initialise les champs de la chanson (artiste, année de création et titre)
         /// </summary>
         public override void LireEntete()
         {
             StreamReader objFichier = new StreamReader(m_nomFichier);
             string ligneLue = objFichier.ReadLine();
-            string[] tabLue = ligneLue.Split(':');
-
-            m_titre = tabLue[0].Split('=')[1].Trim();
-            m_artiste = tabLue[1].Split('=')[1].Trim();
-            m_annee = int.Parse(tabLue[2].Split('=')[1]);
+            string[] tabLue = ligneLue.Split('|');
+            m_artiste = tabLue[0].Trim();
+            m_annee = int.Parse(tabLue[1]);
+            m_titre = tabLue[2].Trim();
         }
 
         /// <summary>
-        /// Récupère les paroles de la chanson à partir du fichier passé en paramètre, les décode selon le format AAC et les retourne.
+        /// Récupèere les paroles de la chanson à partir du fichier passé en paramètre, les décode en format MP3 et les retourne.
         /// </summary>
         /// <param name="pobjFichier">Nom du fichier de la chanson</param>
         /// <returns></returns>
         public override string LireParoles(StreamReader pobjFichier)
         {
             string m_paroles = pobjFichier.ReadToEnd();
-            m_paroles = OutilsFormats.DecoderAAC(m_paroles);
+            m_paroles = OutilsFormats.DecoderMP3(m_paroles);
             return m_paroles;
         }
 
         #endregion
+
+
     }
 }
