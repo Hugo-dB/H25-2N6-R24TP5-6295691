@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BaladeurMultiFormats
 {
+    /// <summary>
+    /// Une ChansonWMA est caractérisée par l’utilisation d’un numéro de codage, il s’agit d’un nombre de 3 à 15 inclusivement qui est utilisé pour encoder le texte des paroles.
+    /// </summary>
     public class ChansonWMA : Chanson
     {
 
@@ -57,7 +61,8 @@ namespace BaladeurMultiFormats
         /// <param name="pobjFichier">Nom du fichier de la chanson</param>
         public override void EcrireEntete(StreamWriter pobjFichier)
         {
-            pobjFichier.WriteLine(m_codage
+            Random encodage = new Random();
+            pobjFichier.WriteLine(encodage.Next(3, 15)
                                 + " / " + m_annee
                                 + " / " + m_titre
                                 + " / " + m_artiste);

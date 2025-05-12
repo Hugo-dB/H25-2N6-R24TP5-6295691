@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace BaladeurMultiFormats
 {
+    /// <summary>
+    /// Une ChansonMP3 utilise un codage au format MP3
+    /// </summary>
     public class ChansonMP3 : Chanson
     {
 
