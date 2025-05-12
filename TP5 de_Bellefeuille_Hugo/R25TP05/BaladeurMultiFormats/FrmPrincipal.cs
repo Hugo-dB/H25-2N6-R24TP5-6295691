@@ -34,6 +34,7 @@ namespace BaladeurMultiFormats
             ChansonWMA testWMA = new ChansonWMA("Chansons\\Hotel California.wma");
             Baladeur testBaladeur = new Baladeur();
             testBaladeur.ConstruireLaListeDesChansons();
+            testBaladeur.AfficherLesChansons(lsvChansons);
         }
         #endregion
         //---------------------------------------------------------------------------------

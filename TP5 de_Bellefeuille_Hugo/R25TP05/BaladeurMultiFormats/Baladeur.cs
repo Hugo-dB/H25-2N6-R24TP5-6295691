@@ -44,9 +44,20 @@ namespace BaladeurMultiFormats
 
         #region MÉTHODES
 
+        /// <summary>
+        /// Affiche la liste des chansons dans la pListView passée en paramètre.
+        /// </summary>
+        /// <param name="pListView">Nom du ListView</param>
         public void AfficherLesChansons(ListView pListView)
         {
-            throw new NotImplementedException();
+            foreach (Chanson uneChanson in m_colChansons)
+            {
+                ListViewItem objItem = new ListViewItem(uneChanson.Artiste);
+                objItem.SubItems.Add(uneChanson.Titre);
+                objItem.SubItems.Add(uneChanson.Annee.ToString());
+                objItem.SubItems.Add(uneChanson.Format);
+                pListView.Items.Add(objItem);
+            }
         }
 
         public Chanson ChansonAt(int pIndex)
