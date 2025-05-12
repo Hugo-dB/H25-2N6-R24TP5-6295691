@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ namespace BaladeurMultiFormats
 {
     public class Baladeur : IBaladeur
     {
-        #region CONSTANTES
+        #region CONSTANTE
 
         /// <summary>
         /// Nom du répertoire des chansons
@@ -36,7 +37,7 @@ namespace BaladeurMultiFormats
 
         public Baladeur()
         {
-            ConstruireLaListeDesChansons();
+            m_colChansons = new List<Chanson>();
         }
 
         #endregion
@@ -53,9 +54,33 @@ namespace BaladeurMultiFormats
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Charge la liste des chansons dans m_colChansons. Elle doit vérifier l’existence du répertoire des chansons, ensuite lit chaque fichier et instancie une classe de chanson selon le format et l’ajoute dans la collection des chansons m_colChansons 
+        /// </summary>
         public void ConstruireLaListeDesChansons()
         {
-            throw new NotImplementedException();
+            if (Directory.Exists(NOM_RÉPERTOIRE))
+            { 
+                foreach (string unFichier in Directory.GetFiles(NOM_RÉPERTOIRE))
+                {
+                    if (unFichier.Contains(".aac"))
+                    {
+                        m_colChansons.Add(new ChansonAAC(unFichier));
+                    }
+                    if (unFichier.Contains(".mp3"))
+                    {
+                        m_colChansons.Add(new ChansonMP3(unFichier));
+                    }
+                    if (unFichier.Contains(".wma"))
+                    {
+                        m_colChansons.Add(new ChansonWMA(unFichier));
+                    }
+                }
+            }
+            else
+            {
+                throw new FileNotFoundException();
+            }
         }
 
         public void ConvertirVersAAC(int pIndex)

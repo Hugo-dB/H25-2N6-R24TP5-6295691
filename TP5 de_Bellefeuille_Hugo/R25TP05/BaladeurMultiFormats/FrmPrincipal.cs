@@ -32,6 +32,8 @@ namespace BaladeurMultiFormats
             ChansonAAC testAAC = new ChansonAAC("Chansons\\Blame It On Me.aac");
             ChansonMP3 testMP3 = new ChansonMP3("Chansons\\Billie Jean.mp3");
             ChansonWMA testWMA = new ChansonWMA("Chansons\\Hotel California.wma");
+            Baladeur testBaladeur = new Baladeur();
+            testBaladeur.ConstruireLaListeDesChansons();
         }
         #endregion
         //---------------------------------------------------------------------------------
