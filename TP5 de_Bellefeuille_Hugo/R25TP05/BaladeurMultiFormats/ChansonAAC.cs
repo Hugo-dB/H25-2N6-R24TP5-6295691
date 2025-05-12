@@ -59,7 +59,6 @@ namespace BaladeurMultiFormats
             pobjFichier.WriteLine("TITRE = " + m_titre
                              + " : ARTISTE = " + m_artiste
                              + " : ANNÉE = " + m_annee);
-            pobjFichier.Close();
         }
 
         /// <summary>
@@ -71,7 +70,6 @@ namespace BaladeurMultiFormats
         {
             string m_paroles = OutilsFormats.EncoderAAC(pParoles);
             pobjFichier.Write(m_paroles);
-            pobjFichier.Close();
         }
 
         /// <summary>
@@ -81,6 +79,7 @@ namespace BaladeurMultiFormats
         {
             StreamReader objFichier = new StreamReader(m_nomFichier);
             string ligneLue = objFichier.ReadLine();
+            objFichier.Close();
             string[] tabLue = ligneLue.Split(':');
 
             m_titre = tabLue[0].Split('=')[1].Trim();

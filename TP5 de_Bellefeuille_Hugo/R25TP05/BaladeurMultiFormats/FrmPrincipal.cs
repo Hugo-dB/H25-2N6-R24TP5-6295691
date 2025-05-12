@@ -35,6 +35,7 @@ namespace BaladeurMultiFormats
             Baladeur testBaladeur = new Baladeur();
             testBaladeur.ConstruireLaListeDesChansons();
             testBaladeur.AfficherLesChansons(lsvChansons);
+            testBaladeur.ConvertirVersAAC(0);
         }
         #endregion
         //---------------------------------------------------------------------------------

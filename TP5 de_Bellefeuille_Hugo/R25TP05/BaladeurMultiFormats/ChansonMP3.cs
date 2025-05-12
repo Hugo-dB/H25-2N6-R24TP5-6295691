@@ -58,7 +58,6 @@ namespace BaladeurMultiFormats
             pobjFichier.WriteLine(m_artiste 
                                 + " | " + m_annee 
                                 + " | " + m_titre);
-            pobjFichier.Close();
         }
 
         /// <summary>
@@ -80,6 +79,7 @@ namespace BaladeurMultiFormats
         {
             StreamReader objFichier = new StreamReader(m_nomFichier);
             string ligneLue = objFichier.ReadLine();
+            objFichier.Close();
             string[] tabLue = ligneLue.Split('|');
             m_artiste = tabLue[0].Trim();
             m_annee = int.Parse(tabLue[1]);

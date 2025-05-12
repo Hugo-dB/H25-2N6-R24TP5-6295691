@@ -87,6 +87,7 @@ namespace BaladeurMultiFormats
                         m_colChansons.Add(new ChansonWMA(unFichier));
                     }
                 }
+                m_colChansons.Sort();
             }
             else
             {
@@ -94,9 +95,19 @@ namespace BaladeurMultiFormats
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pIndex">Index de la chanson</param>
         public void ConvertirVersAAC(int pIndex)
         {
-            throw new NotImplementedException();
+            var chansonIndex = m_colChansons[pIndex];
+
+            m_colChansons[pIndex] = new ChansonAAC(NOM_RÉPERTOIRE, chansonIndex.Artiste, chansonIndex.Titre, chansonIndex.Annee);
+            m_colChansons[pIndex].Ecrire(chansonIndex.Paroles);
+            
+            
+            
         }
 
         public void ConvertirVersMP3(int pIndex)
