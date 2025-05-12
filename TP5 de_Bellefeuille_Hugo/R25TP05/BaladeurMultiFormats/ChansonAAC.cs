@@ -51,19 +51,27 @@ namespace BaladeurMultiFormats
         #region MÉTHODES
 
         /// <summary>
-        /// 
+        /// Écrit une ligne dans le fichier passé en paramètre. Cette ligne correspond à l’entête du fichier et contient les informations sur la chanson 
         /// </summary>
-        /// <param name="pobjFichier"></param>
+        /// <param name="pobjFichier">Nom du fichier de la chanson</param>
         public override void EcrireEntete(StreamWriter pobjFichier)
         {
             pobjFichier.WriteLine("TITRE = " + m_titre
                              + " : ARTISTE = " + m_artiste
                              + " : ANNÉE = " + m_annee);
+            pobjFichier.Close();
         }
 
+        /// <summary>
+        /// Encode les paroles reçues en paramètre au format AAC, ensuite écrit ses paroles encodées dans le fichier passé en paramètre.
+        /// </summary>
+        /// <param name="pobjFichier">Nom du fichier de la chanson</param>
+        /// <param name="pParoles">Paroles à écrire</param>
         public override void EcrireParoles(StreamWriter pobjFichier, string pParoles)
         {
-            throw new NotImplementedException();
+            string Paroles = OutilsFormats.EncoderAAC(pParoles);
+            pobjFichier.Write(Paroles);
+            pobjFichier.Close();
         }
 
         /// <summary>
@@ -73,7 +81,6 @@ namespace BaladeurMultiFormats
         {
             StreamReader objFichier = new StreamReader(m_nomFichier);
             string ligneLue = objFichier.ReadLine();
-            objFichier.Close();
             string[] tabLue = ligneLue.Split(':');
             
             for (int index = 0; index < tabLue.Length; index++)
@@ -83,10 +90,10 @@ namespace BaladeurMultiFormats
                 switch(index)
                 {
                     case 0:
-                        m_titre = infosLue[1];
+                        m_titre = infosLue[1].Trim();
                         break;
                     case 1:
-                        m_artiste = infosLue[1];
+                        m_artiste = infosLue[1].Trim();
                         break;
                     case 2:
                         m_annee = int.Parse(infosLue[1]);
@@ -95,9 +102,17 @@ namespace BaladeurMultiFormats
             }
         }
 
+        /// <summary>
+        /// Récupère les paroles de la chanson à partir du fichier passé en paramètre, les décode selon le format AAC et les retourne.
+        /// </summary>
+        /// <param name="pobjFichier">Nom du fichier de la chanson</param>
+        /// <returns></returns>
         public override string LireParoles(StreamReader pobjFichier)
         {
-            throw new NotImplementedException();
+            SauterEntete(pobjFichier);
+            string Paroles = pobjFichier.ReadToEnd();
+            Paroles = OutilsFormats.DecoderAAC(Paroles);
+            return Paroles;
         }
 
         #endregion

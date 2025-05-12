@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.IO;
+using System.Xml.Linq;
 
 
 namespace BaladeurMultiFormats
@@ -28,6 +29,8 @@ namespace BaladeurMultiFormats
             Text += APP_INFO;
             MonHistorique = new Historique();
             // À COMPLÉTER...
+            ChansonAAC testAAC = new ChansonAAC("Chansons\\Blame It On Me.aac");
+            string test = testAAC.Paroles;
         }
         #endregion
         //---------------------------------------------------------------------------------

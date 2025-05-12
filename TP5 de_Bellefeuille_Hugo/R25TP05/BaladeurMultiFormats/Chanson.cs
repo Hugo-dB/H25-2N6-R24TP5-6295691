@@ -71,12 +71,7 @@ namespace BaladeurMultiFormats
                 {
                     StreamReader objFichier = new StreamReader(m_nomFichier);
                     SauterEntete(objFichier);
-
-                    string m_paroles = "";
-                    while(!objFichier.EndOfStream)
-                    {
-                        m_paroles += objFichier.ReadLine();
-                    }
+                    string m_paroles = LireParoles(objFichier);
                     objFichier.Close();
                     return m_paroles;
                 }
@@ -165,7 +160,6 @@ namespace BaladeurMultiFormats
         public void SauterEntete(StreamReader pobjFichier)
         {
             pobjFichier.ReadLine();
-            pobjFichier.Close();
         }
 
         #endregion
