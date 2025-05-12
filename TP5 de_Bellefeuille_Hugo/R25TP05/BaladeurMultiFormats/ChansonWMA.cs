@@ -14,7 +14,7 @@ namespace BaladeurMultiFormats
     public class ChansonWMA : Chanson
     {
 
-        #region CHAMPS ET PROPRIÉTÉES
+        #region CHAMPS ET PROPRIÉTÉS
 
         /// <summary>
         /// Numéro de codage de la chanson

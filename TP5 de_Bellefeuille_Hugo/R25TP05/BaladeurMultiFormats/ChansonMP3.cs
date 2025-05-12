@@ -13,7 +13,7 @@ namespace BaladeurMultiFormats
     public class ChansonMP3 : Chanson
     {
 
-        #region PROPRIÉTÉES
+        #region PROPRIÉTÉS
 
         /// <summary>
         /// Obtient le format du fichier (MP3)
