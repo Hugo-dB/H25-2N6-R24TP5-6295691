@@ -32,6 +32,8 @@ namespace BaladeurMultiFormats
             // À COMPLÉTER...
             LeBaladeur.ConstruireLaListeDesChansons();
             MettreAJourSelonContexte();
+            LeBaladeur.ConvertirVersWMA(0);
+            MettreAJourSelonContexte();
 
         }
         #endregion

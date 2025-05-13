@@ -61,9 +61,13 @@ namespace BaladeurMultiFormats
             }
         }
 
+        /// <summary>
+        /// Obtient la chanson à l'index pIndex
+        /// </summary>
+        /// <param name="pIndex">Index de la chanson</param>
         public Chanson ChansonAt(int pIndex)
         {
-            throw new NotImplementedException();
+            return m_colChansons[pIndex];
         }
 
         /// <summary>
@@ -137,9 +141,24 @@ namespace BaladeurMultiFormats
             }
         }
 
+        /// <summary>
+        /// Instancie une ChansonWMA à partir de la chanson à l’index pIndex, enregistre les paroles et supprime le fichier du format précédent.
+        /// </summary>
+        /// <param name="pIndex">Index de la chanson</param>
         public void ConvertirVersWMA(int pIndex)
         {
-            throw new NotImplementedException();
+            if (m_colChansons[pIndex].Format != "wma")
+            {
+                var chansonIndex = m_colChansons[pIndex];
+
+                m_colChansons[pIndex] = new ChansonWMA(NOM_RÉPERTOIRE, chansonIndex.Artiste, chansonIndex.Titre, chansonIndex.Annee);
+                m_colChansons[pIndex].Ecrire(chansonIndex.Paroles);
+
+                if (File.Exists(m_colChansons[pIndex].NomFichier))
+                {
+                    File.Delete(chansonIndex.NomFichier);
+                }
+            }
         }
 
         #endregion
