@@ -106,9 +106,7 @@ namespace BaladeurMultiFormats
         /// </summary>
         /// <param name="pIndex">Index de la chanson</param>
         public void ConvertirVersAAC(int pIndex)
-        {
-            if (m_colChansons[pIndex].Format != "aac")
-            {
+        { 
                 var chansonIndex = m_colChansons[pIndex];
 
                 m_colChansons[pIndex] = new ChansonAAC(NOM_RÉPERTOIRE, chansonIndex.Artiste, chansonIndex.Titre, chansonIndex.Annee);
@@ -118,8 +116,6 @@ namespace BaladeurMultiFormats
                 {
                     File.Delete(chansonIndex.NomFichier);
                 }
-            }
-            
         }
 
         /// <summary>
@@ -128,8 +124,6 @@ namespace BaladeurMultiFormats
         /// <param name="pIndex">Index de la chanson</param>
         public void ConvertirVersMP3(int pIndex)
         {
-            if (m_colChansons[pIndex].Format != "mp3")
-            {
                 var chansonIndex = m_colChansons[pIndex];
 
                 m_colChansons[pIndex] = new ChansonMP3(NOM_RÉPERTOIRE, chansonIndex.Artiste, chansonIndex.Titre, chansonIndex.Annee);
@@ -139,7 +133,6 @@ namespace BaladeurMultiFormats
                 {
                     File.Delete(chansonIndex.NomFichier);
                 }
-            }
         }
 
         /// <summary>
@@ -148,8 +141,6 @@ namespace BaladeurMultiFormats
         /// <param name="pIndex">Index de la chanson</param>
         public void ConvertirVersWMA(int pIndex)
         {
-            if (m_colChansons[pIndex].Format != "wma")
-            {
                 var chansonIndex = m_colChansons[pIndex];
 
                 m_colChansons[pIndex] = new ChansonWMA(NOM_RÉPERTOIRE, chansonIndex.Artiste, chansonIndex.Titre, chansonIndex.Annee);
@@ -159,7 +150,6 @@ namespace BaladeurMultiFormats
                 {
                     File.Delete(chansonIndex.NomFichier);
                 }
-            }
         }
 
         #endregion

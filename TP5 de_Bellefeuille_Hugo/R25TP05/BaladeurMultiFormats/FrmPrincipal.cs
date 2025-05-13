@@ -57,6 +57,23 @@ namespace BaladeurMultiFormats
                 Consultation NouvelleConsultation = new Consultation(DateTime.Now, LeBaladeur.ChansonAt(index));
                 MonHistorique.Ajouter(NouvelleConsultation);
                 txtParoles.Text = LeBaladeur.ChansonAt(index).Paroles;
+
+                MnuFormatConvertirVersAAC.Enabled = true;
+                MnuFormatConvertirVersMP3.Enabled = true;
+                MnuFormatConvertirVersWMA.Enabled = true;
+                switch (LeBaladeur.ChansonAt(index).Format)
+                {
+                    case "aac":
+                        MnuFormatConvertirVersAAC.Enabled = false;
+                        break;
+                    case "mp3":
+                        MnuFormatConvertirVersMP3.Enabled = false;
+                        break;
+                    case "wma":
+                        MnuFormatConvertirVersWMA.Enabled = false;
+                        break;
+                }
+
             }
         }
         #endregion

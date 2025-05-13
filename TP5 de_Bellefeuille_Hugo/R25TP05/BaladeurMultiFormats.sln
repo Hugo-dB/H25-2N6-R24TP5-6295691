@@ -5,6 +5,8 @@ VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaladeurMultiFormats", "BaladeurMultiFormats\BaladeurMultiFormats.csproj", "{E170D680-6255-4BCA-A859-380F698A5138}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BaladeurMultiFormats_Tests", "BaladeurMultiFormats_Tests\BaladeurMultiFormats_Tests.csproj", "{67C49DEF-39E1-465D-B2D5-DB860DAADF00}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{E170D680-6255-4BCA-A859-380F698A5138}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E170D680-6255-4BCA-A859-380F698A5138}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E170D680-6255-4BCA-A859-380F698A5138}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67C49DEF-39E1-465D-B2D5-DB860DAADF00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67C49DEF-39E1-465D-B2D5-DB860DAADF00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67C49DEF-39E1-465D-B2D5-DB860DAADF00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67C49DEF-39E1-465D-B2D5-DB860DAADF00}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

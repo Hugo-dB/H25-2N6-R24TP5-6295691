@@ -52,7 +52,7 @@ namespace BaladeurMultiFormats
         /// <param name="pDate">Date de consultation</param>
         /// <returns>La nouvelle consultation</returns>
         /// <exception cref="ArgumentNullException"></exception>
-        public Consultation Ajouter(object pChanson, DateTime pDate)
+        public Consultation Ajouter(Chanson pChanson, DateTime pDate)
         {
             if (pChanson == null)
             {
@@ -115,7 +115,7 @@ namespace BaladeurMultiFormats
 
         #region HistoriqueEntreDeuxDates
         /// <summary>
-        /// Obtenir la liste des consultations effectées entre deux dates
+        /// Obtenir la liste des consultations effectuées entre deux dates
         /// </summary>
         /// <param name="pDateInf">date de début</param>
         /// <param name="pDateSup">date de fin</param>
