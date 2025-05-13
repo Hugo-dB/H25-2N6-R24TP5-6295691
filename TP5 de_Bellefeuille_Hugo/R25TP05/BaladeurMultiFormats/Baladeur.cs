@@ -97,7 +97,7 @@ namespace BaladeurMultiFormats
         }
 
         /// <summary>
-        /// 
+        /// Instancie une ChansonAAC à partir de la chanson à l’index pIndex, enregistre les paroles et supprime le fichier du format précédent.
         /// </summary>
         /// <param name="pIndex">Index de la chanson</param>
         public void ConvertirVersAAC(int pIndex)
@@ -109,7 +109,7 @@ namespace BaladeurMultiFormats
                 m_colChansons[pIndex] = new ChansonAAC(NOM_RÉPERTOIRE, chansonIndex.Artiste, chansonIndex.Titre, chansonIndex.Annee);
                 m_colChansons[pIndex].Ecrire(chansonIndex.Paroles);
 
-                if (File.Exists(chansonIndex.NomFichier))
+                if (File.Exists(m_colChansons[pIndex].NomFichier))
                 {
                     File.Delete(chansonIndex.NomFichier);
                 }
@@ -117,9 +117,24 @@ namespace BaladeurMultiFormats
             
         }
 
+        /// <summary>
+        /// Instancie une ChansonMP3 à partir de la chanson à l’index pIndex, enregistre les paroles et supprime le fichier du format précédent.
+        /// </summary>
+        /// <param name="pIndex">Index de la chanson</param>
         public void ConvertirVersMP3(int pIndex)
         {
-            throw new NotImplementedException();
+            if (m_colChansons[pIndex].Format != "mp3")
+            {
+                var chansonIndex = m_colChansons[pIndex];
+
+                m_colChansons[pIndex] = new ChansonMP3(NOM_RÉPERTOIRE, chansonIndex.Artiste, chansonIndex.Titre, chansonIndex.Annee);
+                m_colChansons[pIndex].Ecrire(chansonIndex.Paroles);
+
+                if (File.Exists(m_colChansons[pIndex].NomFichier))
+                {
+                    File.Delete(chansonIndex.NomFichier);
+                }
+            }
         }
 
         public void ConvertirVersWMA(int pIndex)

@@ -33,7 +33,6 @@ namespace BaladeurMultiFormats
             LeBaladeur.ConstruireLaListeDesChansons();
             MettreAJourSelonContexte();
 
-
         }
         #endregion
         //---------------------------------------------------------------------------------
