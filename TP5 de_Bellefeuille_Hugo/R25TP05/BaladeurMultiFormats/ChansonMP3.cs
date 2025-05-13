@@ -18,7 +18,7 @@ namespace BaladeurMultiFormats
         /// <summary>
         /// Obtient le format du fichier (MP3)
         /// </summary>
-        public override string Format { get { return "MP3"; } }
+        public override string Format { get { return "mp3"; } }
 
         #endregion
 

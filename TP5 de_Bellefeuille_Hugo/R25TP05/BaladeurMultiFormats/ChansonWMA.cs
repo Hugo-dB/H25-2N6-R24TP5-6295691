@@ -24,7 +24,7 @@ namespace BaladeurMultiFormats
         /// <summary>
         /// Obtient le format du fichier (WMA)
         /// </summary>
-        public override string Format { get { return "WMA"; } }
+        public override string Format { get { return "wma"; } }
 
         #endregion
 

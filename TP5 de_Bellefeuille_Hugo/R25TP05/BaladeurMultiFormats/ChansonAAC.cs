@@ -19,7 +19,7 @@ namespace BaladeurMultiFormats
         /// <summary>
         /// Obtient le format du fichier (AAC)
         /// </summary>
-        public override string Format { get { return "AAC"; } }
+        public override string Format { get { return "aac"; } }
 
         #endregion
 

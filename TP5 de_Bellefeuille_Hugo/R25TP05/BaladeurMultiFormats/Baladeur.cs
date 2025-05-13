@@ -50,12 +50,13 @@ namespace BaladeurMultiFormats
         /// <param name="pListView">Nom du ListView</param>
         public void AfficherLesChansons(ListView pListView)
         {
+            pListView.Items.Clear();
             foreach (Chanson uneChanson in m_colChansons)
             {
                 ListViewItem objItem = new ListViewItem(uneChanson.Artiste);
                 objItem.SubItems.Add(uneChanson.Titre);
                 objItem.SubItems.Add(uneChanson.Annee.ToString());
-                objItem.SubItems.Add(uneChanson.Format);
+                objItem.SubItems.Add(uneChanson.Format.ToUpper());
                 pListView.Items.Add(objItem);
             }
         }
@@ -87,7 +88,7 @@ namespace BaladeurMultiFormats
                         m_colChansons.Add(new ChansonWMA(unFichier));
                     }
                 }
-                m_colChansons.Sort();
+
             }
             else
             {
@@ -101,12 +102,18 @@ namespace BaladeurMultiFormats
         /// <param name="pIndex">Index de la chanson</param>
         public void ConvertirVersAAC(int pIndex)
         {
-            var chansonIndex = m_colChansons[pIndex];
+            if (m_colChansons[pIndex].Format != "aac")
+            {
+                var chansonIndex = m_colChansons[pIndex];
 
-            m_colChansons[pIndex] = new ChansonAAC(NOM_RÉPERTOIRE, chansonIndex.Artiste, chansonIndex.Titre, chansonIndex.Annee);
-            m_colChansons[pIndex].Ecrire(chansonIndex.Paroles);
-            
-            
+                m_colChansons[pIndex] = new ChansonAAC(NOM_RÉPERTOIRE, chansonIndex.Artiste, chansonIndex.Titre, chansonIndex.Annee);
+                m_colChansons[pIndex].Ecrire(chansonIndex.Paroles);
+
+                if (File.Exists(chansonIndex.NomFichier))
+                {
+                    File.Delete(chansonIndex.NomFichier);
+                }
+            }
             
         }
 

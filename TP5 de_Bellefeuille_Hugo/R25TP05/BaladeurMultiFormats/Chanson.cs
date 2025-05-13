@@ -93,8 +93,12 @@ namespace BaladeurMultiFormats
         /// <param name="pNomFichier">Nom du fichier de la chanson</param>
         public Chanson(string pNomFichier)
         {
-            m_nomFichier = pNomFichier;
-            LireEntete();
+            if (File.Exists(pNomFichier))
+            {
+                m_nomFichier = pNomFichier;
+                LireEntete();
+            }
+            
         }
 
         /// <summary>

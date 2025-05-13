@@ -16,6 +16,7 @@ namespace BaladeurMultiFormats
 
     public partial class FrmPrincipal : Form
     {
+        Baladeur LeBaladeur = new Baladeur();
         public const string APP_INFO = "6295691";
 
         #region Propriété : MonHistorique
@@ -29,20 +30,17 @@ namespace BaladeurMultiFormats
             Text += APP_INFO;
             MonHistorique = new Historique();
             // À COMPLÉTER...
-            ChansonAAC testAAC = new ChansonAAC("Chansons\\Blame It On Me.aac");
-            ChansonMP3 testMP3 = new ChansonMP3("Chansons\\Billie Jean.mp3");
-            ChansonWMA testWMA = new ChansonWMA("Chansons\\Hotel California.wma");
-            Baladeur testBaladeur = new Baladeur();
-            testBaladeur.ConstruireLaListeDesChansons();
-            testBaladeur.AfficherLesChansons(lsvChansons);
-            testBaladeur.ConvertirVersAAC(0);
+            LeBaladeur.ConstruireLaListeDesChansons();
+            MettreAJourSelonContexte();
+
+
         }
         #endregion
         //---------------------------------------------------------------------------------
         #region Méthode : MettreAJourSelonContexte
         private void MettreAJourSelonContexte()
         {
-            // À COMPLÉTER...
+            LeBaladeur.AfficherLesChansons(lsvChansons);
         }
         #endregion
         //---------------------------------------------------------------------------------
