@@ -59,6 +59,7 @@ namespace BaladeurMultiFormats
                 objItem.SubItems.Add(uneChanson.Format.ToUpper());
                 pListView.Items.Add(objItem);
             }
+            pListView.Sort();
         }
 
         /// <summary>

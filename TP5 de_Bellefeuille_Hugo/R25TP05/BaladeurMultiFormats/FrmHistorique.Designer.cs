@@ -73,6 +73,7 @@
             this.lsvChansons.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lsvChansons.FullRowSelect = true;
             this.lsvChansons.GridLines = true;
+            this.lsvChansons.HideSelection = false;
             this.lsvChansons.Location = new System.Drawing.Point(30, 55);
             this.lsvChansons.MultiSelect = false;
             this.lsvChansons.Name = "lsvChansons";
@@ -80,6 +81,7 @@
             this.lsvChansons.TabIndex = 5;
             this.lsvChansons.UseCompatibleStateImageBehavior = false;
             this.lsvChansons.View = System.Windows.Forms.View.Details;
+            this.lsvChansons.SelectedIndexChanged += new System.EventHandler(this.lsvChansons_SelectedIndexChanged);
             // 
             // clhArtiste
             // 
@@ -119,6 +121,7 @@
             this.lblNbChansons.TabIndex = 95;
             this.lblNbChansons.Text = "0";
             this.lblNbChansons.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNbChansons.Click += new System.EventHandler(this.lblNbChansons_Click);
             // 
             // panel1
             // 
@@ -162,6 +165,7 @@
             this.lblNbChansonsDepuis.TabIndex = 99;
             this.lblNbChansonsDepuis.Text = "0";
             this.lblNbChansonsDepuis.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblNbChansonsDepuis.Click += new System.EventHandler(this.lblNbChansonsDepuis_Click);
             // 
             // label2
             // 

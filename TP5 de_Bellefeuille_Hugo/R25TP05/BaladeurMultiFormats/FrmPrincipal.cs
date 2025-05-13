@@ -16,7 +16,7 @@ namespace BaladeurMultiFormats
 
     public partial class FrmPrincipal : Form
     {
-        Baladeur LeBaladeur = new Baladeur();
+        Baladeur LeBaladeur;
         public const string APP_INFO = "6295691";
 
         #region Propriété : MonHistorique
@@ -30,10 +30,11 @@ namespace BaladeurMultiFormats
             Text += APP_INFO;
             MonHistorique = new Historique();
             // À COMPLÉTER...
+            LeBaladeur = new Baladeur();
             LeBaladeur.ConstruireLaListeDesChansons();
             MettreAJourSelonContexte();
-            LeBaladeur.ConvertirVersWMA(0);
-            MettreAJourSelonContexte();
+
+
 
         }
         #endregion
@@ -42,13 +43,21 @@ namespace BaladeurMultiFormats
         private void MettreAJourSelonContexte()
         {
             LeBaladeur.AfficherLesChansons(lsvChansons);
+            lblNbChansons.Text = LeBaladeur.NbChansons.ToString();
         }
         #endregion
         //---------------------------------------------------------------------------------
         #region Événement : LsvChansons_SelectedIndexChanged
         private void LsvChansons_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // À COMPLÉTER...
+            txtParoles.Text = "";
+            if (lsvChansons.SelectedIndices.Count > 0)
+            {  
+                int index = lsvChansons.SelectedIndices[0];
+                Consultation NouvelleConsultation = new Consultation(DateTime.Now, LeBaladeur.ChansonAt(index));
+                MonHistorique.Ajouter(NouvelleConsultation);
+                txtParoles.Text = LeBaladeur.ChansonAt(index).Paroles;
+            }
         }
         #endregion
 
@@ -57,17 +66,39 @@ namespace BaladeurMultiFormats
         private void MnuFormatConvertirVersAAC_Click(object sender, EventArgs e)
         {
             // Vider l'historique car les références ne sont plus bonnes
+            MonHistorique.Vider();
             // À COMPLÉTER...
+            if (lsvChansons.SelectedIndices.Count > 0)
+            {
+                int index = lsvChansons.SelectedIndices[0];
+                LeBaladeur.ConvertirVersAAC(index);
+            }
+            MettreAJourSelonContexte();
+            
         }
         private void MnuFormatConvertirVersMP3_Click(object sender, EventArgs e)
         {
             // Vider l'historique car les références ne sont plus bonnes
+            MonHistorique.Vider();
             // À COMPLÉTER...
+            if (lsvChansons.SelectedIndices.Count > 0)
+            {
+                int index = lsvChansons.SelectedIndices[0];
+                LeBaladeur.ConvertirVersMP3(index);
+            }
+            MettreAJourSelonContexte();
         }
         private void MnuFormatConvertirVersWMA_Click(object sender, EventArgs e)
         {
             // Vider l'historique car les références ne sont plus bonnes
+            MonHistorique.Vider();
             // À COMPLÉTER...
+            if (lsvChansons.SelectedIndices.Count > 0)
+            {
+                int index = lsvChansons.SelectedIndices[0];
+                LeBaladeur.ConvertirVersWMA(index);
+            }
+            MettreAJourSelonContexte();
         }
         #endregion
         //---------------------------------------------------------------------------------

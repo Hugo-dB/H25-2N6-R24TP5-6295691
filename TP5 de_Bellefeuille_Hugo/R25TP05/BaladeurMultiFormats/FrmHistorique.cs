@@ -29,20 +29,20 @@ namespace BaladeurMultiFormats
         /// <param name="pHistorique">Historique à afficher</param>
         public void AfficherHistorique()
         {
-            //lsvChansons.Items.Clear();
-            //lsvChansons.BeginUpdate();
-            //for (int index = m_historique.ColConsultations.Count - 1; index >= 0; index--)
-            //{
-            //    Consultation objConsultation = m_historique.ColConsultations[index];
-            //    Chanson objChanson = objConsultation.LaChanson;
-            //    ListViewItem objItem = new ListViewItem(objChanson.Artiste);
-            //    objItem.SubItems.Add(objChanson.Titre);
-            //    objItem.SubItems.Add(objChanson.Annee.ToString());
-            //    objItem.SubItems.Add(objConsultation.Délai + "s");
-            //    objItem.SubItems.Add(m_historique.NbConsultationsPourUneChanson(objChanson).ToString());
-            //    lsvChansons.Items.Add(objItem);
-            //}
-            //lsvChansons.EndUpdate();
+            lsvChansons.Items.Clear();
+            lsvChansons.BeginUpdate();
+            for (int index = m_historique.ColConsultations.Count - 1; index >= 0; index--)
+            {
+                Consultation objConsultation = m_historique.ColConsultations[index];
+                Chanson objChanson = (Chanson)objConsultation.LaChanson;
+                ListViewItem objItem = new ListViewItem(objChanson.Artiste);
+                objItem.SubItems.Add(objChanson.Titre);
+                objItem.SubItems.Add(objChanson.Annee.ToString());
+                objItem.SubItems.Add(objConsultation.Délai + "s");
+                objItem.SubItems.Add(m_historique.NbConsultationsPourUneChanson(objChanson).ToString());
+                lsvChansons.Items.Add(objItem);
+            }
+            lsvChansons.EndUpdate();
         }
         #endregion
 
@@ -63,13 +63,28 @@ namespace BaladeurMultiFormats
 
         private void TmrRaffraîchir_Tick(object sender, System.EventArgs e)
         {
-            //RaffraîchirNbConsultationsDepuis();
-            //for (int index = m_historique.ColConsultations.Count - 1; index >= 0; index--)
-            //{
-            //    Consultation objConsultation = m_historique.ColConsultations[m_historique.ColConsultations.Count - index -1]; // BUFFIX : 12/05/2022 
-            //    Chanson objChanson = objConsultation.LaChanson;
-            //    lsvChansons.Items[index].SubItems[3].Text = objConsultation.Délai + "s";
-            //}
+            RaffraîchirNbConsultationsDepuis();
+            for (int index = m_historique.ColConsultations.Count - 1; index >= 0; index--)
+            {
+                Consultation objConsultation = m_historique.ColConsultations[m_historique.ColConsultations.Count - index - 1]; // BUFFIX : 12/05/2022 
+                Chanson objChanson = (Chanson)objConsultation.LaChanson;
+                lsvChansons.Items[index].SubItems[3].Text = objConsultation.Délai + "s";
+            }
+        }
+
+        private void lsvChansons_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void lblNbChansons_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void lblNbChansonsDepuis_Click(object sender, System.EventArgs e)
+        {
+
         }
     }
 }
