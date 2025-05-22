@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Consultation_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Historique_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
