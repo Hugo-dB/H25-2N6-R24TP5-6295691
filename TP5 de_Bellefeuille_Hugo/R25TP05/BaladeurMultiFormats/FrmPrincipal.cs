@@ -57,7 +57,7 @@ namespace BaladeurMultiFormats
                 Consultation NouvelleConsultation = new Consultation(DateTime.Now, LeBaladeur.ChansonAt(index));
                 MonHistorique.Ajouter(NouvelleConsultation);
                 txtParoles.Text = LeBaladeur.ChansonAt(index).Paroles;
-
+                
                 MnuFormatConvertirVersAAC.Enabled = true;
                 MnuFormatConvertirVersMP3.Enabled = true;
                 MnuFormatConvertirVersWMA.Enabled = true;

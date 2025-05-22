@@ -36,9 +36,15 @@ namespace BaladeurMultiFormats
         /// <param name="pChanson">Chanson qui a été consultée</param>
         public Consultation(DateTime pDate, object pChanson)
         {
-            if (pChanson == null) throw new ArgumentNullException();
-            Date = pDate;
-            LaChanson = pChanson;
+            if (pChanson == null || pDate == new DateTime(0001, 01, 01, 00, 00, 00))
+            {
+                throw new ArgumentNullException();
+            }
+            else
+            {
+                Date = pDate;
+                LaChanson = pChanson;
+            }
         }
         #endregion
     }
