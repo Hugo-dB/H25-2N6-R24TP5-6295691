@@ -10,19 +10,6 @@ namespace BaladeurMultiFormats_Tests
     [TestClass]
     public class Consultation_Tests
     {
-        #region PROPRIÉTÉS
-
-        [TestMethod()]
-        public void DélaiTest()
-        {
-            ChansonAAC objChanson = new ChansonAAC("Chansons", "Test", "Test", 2000);
-            Consultation objConsultation = new Consultation(DateTime.Now, objChanson);
-
-            Assert.AreEqual((int)((DateTime.Now - objConsultation.Date).TotalSeconds), objConsultation.Délai);
-        }
-
-        #endregion
-
         #region CONSTRUCTEURS
 
         /// <summary>
@@ -55,6 +42,18 @@ namespace BaladeurMultiFormats_Tests
 
         #endregion
 
+        #region PROPRIÉTÉS
+
+        [TestMethod()]
+        public void DélaiTest()
+        {
+            ChansonAAC objChanson = new ChansonAAC("Chansons", "Test", "Test", 2000);
+            Consultation objConsultation = new Consultation(DateTime.Now, objChanson);
+
+            Assert.AreEqual((int)((DateTime.Now - objConsultation.Date).TotalSeconds), objConsultation.Délai);
+        }
+
+        #endregion
     }
 
 }
